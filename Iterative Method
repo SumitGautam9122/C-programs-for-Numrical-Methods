@@ -1,0 +1,33 @@
+#include<stdio.h>
+#include<conio.h>
+#include<math.h>
+#include<process.h>
+#define f(x) cos(x)-3*x+1
+#define g(x) (1+cos(x))/3
+#define EPS 0.000001
+
+void main()
+{
+int i=1,n;
+float x0,x1;
+clrscr();
+printf("Enter initial guess:");
+scanf("%f",&x0);
+printf("Enter maximum iteration:");
+scanf("%d",&n);
+printf("\nStep\tx0\tf(x0)\tx1\tf(x1)\n");
+do
+{
+x1=g(x0);
+printf("%d\t%f\t%f\t%f\t%f\n",i,x0,f(x0),x1,f(x1));
+i++;
+if(i>n)
+{
+printf("Not Convergent");
+exit(0);
+}
+x0=x1;
+}while(fabs(f(x1))>EPS);
+printf("\nRoot is %f",x1);
+getch();
+}
