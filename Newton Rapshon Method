@@ -1,0 +1,36 @@
+#include<stdio.h>
+#include<conio.h>
+#include<math.h>
+
+#define f(x) 3*x-cos(x)-1
+#define df(x) 3*x+sin(x)
+#define EPS 0.0001
+void main()
+{
+float x0,x1,f0,f1,d0;
+int i=1,n;
+clrscr();
+printf("Enter initial value:");
+scanf("%f",&x0);
+printf("Enter the maximum iteration:");
+scanf("%d",&n);
+do
+{
+f0=f(x0);
+d0=df(x0);
+if(d0==0)
+{
+printf("ERRROR");
+break;
+}
+x1=x0-f0/d0;
+printf("%f",x1);
+x0=x1;
+i++;
+
+f1=f(x1);
+}while(fabs(f1)>EPS);
+
+printf("Root is %f",x1);
+getch();
+}
